@@ -19,8 +19,13 @@
             // 초기화 단계
             if(state === undefined) {
                 // 초기 state 값
-                return {color: 'yellow'}
+                return {color: 'yellow'};
             }
+            var newState;
+            if(action.type === 'CHANGE_COLOR') {
+                newState = Object.assign({}, state, {color: 'red'});
+            }
+            return newState;
         }
         // store 저장
         var store = Redux.createStore(reducer);
@@ -30,9 +35,7 @@
                 <div class="container" id="component_red" style="background-color: ${state.color}">
                     <h1>red</h1>
                     <input type="button" value="fire" onclick="
-                    document.querySelector('#component_red').style.backgroundColor= 'red';
-                    document.querySelector('#component_green').style.backgroundColor= 'red';
-                    document.querySelector('#component_blue').style.backgroundColor= 'red';
+                        store.dispatch({type:'CHANGE_COLOR', color: 'red'});
                     "/>
                 </div>
             `;
