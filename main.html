@@ -141,8 +141,8 @@
                 } else if (action.type === 'CREATE') {
                     // 배열 복제시 concat() 함수 활용
                     var newMax_id = state.max_id + 1;
-                    var newContents = state.contents.concat({id: newMax_id, title: action.title, desc: action.desc});
-                    // newContents.push()
+                    var newContents = state.contents.concat();
+                    newContents.push({id: newMax_id, title: action.title, desc: action.desc});
                     newState =  Object.assign({}, state, {
                         max_id: newMax_id,
                         contents: newContents,
