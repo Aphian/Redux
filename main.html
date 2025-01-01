@@ -22,12 +22,20 @@
                 `
             }
             function TOC() {
+                var state = store.getState();
+                var i = 0;
+                var liTags = '';
+                while (i<state.contents.length) {
+                    liTags = liTags + `
+                        <li>
+                            <a href="${state.contents[i].id}">${state.contents[i].title}</a>
+                        </li>
+                    `
+                    i = i + 1;
+                }
                 document.querySelector('#toc').innerHTML = `
                     <nav>
-                        <ol>
-                            <li><a href="1.html">HTML</a></li>
-                            <li><a href="2.css">CSS</a></li>
-                        </ol>
+                        <ol>${liTags}</ol>
                     </nav>            
                 `
             }
